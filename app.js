@@ -1,13 +1,13 @@
 const express = require('express');
 const expressGraphQL = require('express-graphql');
-const bodyparser = require('body-parser');
+const jsonParser = require("body-parser").json;
 const mongoose = require('mongoose');
 const schema = require('./schema.js');
 
 const db = require('./models/db');
 const app = express();
 
-app.use(bodyparser.text({type: 'application/graphql'}));
+app.use(jsonParser());
 
 app.use('/graphql', expressGraphQL({
     schema:schema,
